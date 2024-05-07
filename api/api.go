@@ -7,7 +7,6 @@ import (
 	"io/fs"
 	"mime/multipart"
 	"net/http"
-	"strings"
 )
 
 var DefaultClient = &Client{}
@@ -94,7 +93,6 @@ func (a *Client) Run(parameters Parameters) (string, error) {
 	req, _ := http.NewRequest("POST", a.URL, buffer)
 	req.Header.Set("Content-Type", data.FormDataContentType())
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("User-Agent", "curl/0.0.0")
 
 	res, err := a.HTTPClient.Do(req)
 	if err != nil {
@@ -111,10 +109,6 @@ func (a *Client) Run(parameters Parameters) (string, error) {
 		return "", err
 	}
 	text := string(bytes)
-
-	if strings.Contains(text, `.api.csswg.org`) {
-		panic("Run: got the form page instead of rendered HTML")
-	}
 
 	return text, nil
 }

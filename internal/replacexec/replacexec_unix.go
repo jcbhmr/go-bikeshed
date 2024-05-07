@@ -8,8 +8,6 @@ import (
 	"golang.org/x/sys/unix"
 )
 
-func Replacexec(cmd string, args ...string) error {
-	argv := []string{cmd}
-	argv = append(argv, args...)
+func Replacexec(cmd string, argv ...string) error {
 	return unix.Exec(cmd, argv, os.Environ())
 }
