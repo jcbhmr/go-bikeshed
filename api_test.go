@@ -1,10 +1,10 @@
-package api_test
+package bikeshed_test
 
 import (
 	"log"
 	"testing"
 
-	"github.com/jcbhmr/go-bikeshed/api"
+	"github.com/jcbhmr/go-bikeshed"
 )
 
 func init() {
@@ -33,7 +33,7 @@ Introduction here.
 `
 
 func TestRun(t *testing.T) {
-	html, err := api.Run(api.Parameters{
+	html, err := bikeshed.Run(bikeshed.Parameters{
 		Text: Template,
 	})
 	if err != nil {

@@ -1,4 +1,4 @@
-package api
+package bikeshed
 
 import (
 	"bytes"
